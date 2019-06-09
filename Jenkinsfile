@@ -7,19 +7,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh ‘mvn clean compile'
+                sh 'mvn clean compile'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'mvn test’
+                sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('Package') {
             steps {
                 echo 'Deploying....'
-                sh ‘mvn -DskipTests'
+                sh 'mvn -DskipTests'
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
